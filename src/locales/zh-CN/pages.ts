@@ -64,4 +64,10 @@ export default {
   'pages.searchTable.tenThousand': '万',
   'pages.searchTable.batchDeletion': '批量删除',
   'pages.searchTable.batchApproval': '批量审批',
+  'pages.welcome.fei': '欢迎来到飞的小破站',
+  'pages.welcome.desc':
+    '做此项目有何目的呢？就是想汇集一些市面上常用的前端技术，以此来推动开发的动力。',
+  'pages.welcome.startDate': '开始日期：',
+  'pages.welcome.passed': '距离今天已经过了',
+  'pages.welcome.days': '天',
 };
