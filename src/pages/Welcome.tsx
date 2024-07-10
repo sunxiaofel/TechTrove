@@ -1,6 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { useModel } from '@umijs/max';
+import { FormattedMessage, useModel } from '@umijs/max';
 import { Card, theme } from 'antd';
+import dayjs from 'dayjs';
 import React from 'react';
 
 /**
@@ -86,6 +87,10 @@ const InfoCard: React.FC<{
 const Welcome: React.FC = () => {
   const { token } = theme.useToken();
   const { initialState } = useModel('@@initialState');
+  const startDate = dayjs('2024/7/9');
+  const nowDate = dayjs();
+  const daysPassed = nowDate.diff(startDate, 'day');
+  console.log('🚀 ~ nowDate:', nowDate);
   return (
     <PageContainer>
       <Card
@@ -116,7 +121,7 @@ const Welcome: React.FC = () => {
               color: token.colorTextHeading,
             }}
           >
-            欢迎使用 Ant Design Pro
+            <FormattedMessage id="pages.welcome.fei" defaultMessage="飞的小破站" />
           </div>
           <p
             style={{
@@ -128,8 +133,13 @@ const Welcome: React.FC = () => {
               width: '65%',
             }}
           >
-            Ant Design Pro 是一个整合了 umi，Ant Design 和 ProComponents
-            的脚手架方案。致力于在设计规范和基础组件的基础上，继续向上构建，提炼出典型模板/业务组件/配套设计资源，进一步提升企业级中后台产品设计研发过程中的『用户』和『设计者』的体验。
+            <FormattedMessage id="pages.welcome.desc" defaultMessage="desc" />
+            <br />
+            <br />
+            <FormattedMessage id="pages.welcome.startDate" defaultMessage="desc" />
+            {startDate.format('YYYY-MM-DD')}{' '}
+            <FormattedMessage id="pages.welcome.passed" defaultMessage="距离今天已经过了" />{' '}
+            {daysPassed} <FormattedMessage id="pages.welcome.days" defaultMessage="天" />
           </p>
           <div
             style={{

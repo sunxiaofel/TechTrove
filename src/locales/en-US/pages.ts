@@ -1,5 +1,5 @@
 export default {
-  'pages.layouts.userLayout.title': 'Continue to learn common front-end technologies',
+  'pages.layouts.userLayout.title': 'Continue to learn common front-end technologies...',
   'pages.login.accountLogin.tab': 'Account Login',
   'pages.login.accountLogin.errorMessage': 'Incorrect username/password(sxf/admin)',
   'pages.login.failure': 'Login failed, please try again!',
@@ -66,4 +66,10 @@ export default {
   'pages.searchTable.tenThousand': '0000',
   'pages.searchTable.batchDeletion': 'batch deletion',
   'pages.searchTable.batchApproval': 'batch approval',
+  'pages.welcome.fei': 'Welcome to the flying crappy station',
+  'pages.welcome.desc':
+    'What is the purpose of this project? It is to bring together some front-end technologies commonly used on the market to promote the power of development.',
+  'pages.welcome.startDate': 'Start date：',
+  'pages.welcome.passed': 'Today has passed',
+  'pages.welcome.days': 'days',
 };
