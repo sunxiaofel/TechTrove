@@ -25,6 +25,7 @@ export default defineConfig({
 
   /**
    * @type borwser | hash 默认borwser
+   * @desc 解决部署到github 刷新页面后404的问题
    */
   history: {
     type: 'hash',
