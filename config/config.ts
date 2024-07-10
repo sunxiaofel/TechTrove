@@ -171,4 +171,9 @@ export default defineConfig({
   requestRecord: {},
   // 将github的仓库名作为基本url
   publicPath: process.env.NODE_ENV === 'production' ? '/TechTrove/' : '/',
+  favicons: [
+    // 完整地址
+    'https://sunxiaofel.github.io/TechTrove/favicon.ico',
+    '/favicon.icon',
+  ],
 });
