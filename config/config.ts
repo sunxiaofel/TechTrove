@@ -161,8 +161,5 @@ export default defineConfig({
   },
   esbuildMinifyIIFE: true,
   requestRecord: {},
-  base:
-    process.env.NODE_ENV === 'production' ? 'https://sunxiaofei1422.github.io/ToolSpotlight/' : '/',
-  publicPath:
-    process.env.NODE_ENV === 'production' ? 'https://sunxiaofei1422.github.io/ToolSpotlight/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/TechTrove/' : '/',
 });
