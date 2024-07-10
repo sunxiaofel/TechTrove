@@ -24,6 +24,13 @@ export default defineConfig({
   hash: true,
 
   /**
+   * @type borwser | hash 默认borwser
+   */
+  history: {
+    type: 'hash',
+  },
+
+  /**
    * @name 兼容性设置
    * @description 设置 ie11 不一定完美兼容，需要检查自己使用的所有依赖
    * @doc https://umijs.org/docs/api/config#targets
@@ -161,5 +168,6 @@ export default defineConfig({
   },
   esbuildMinifyIIFE: true,
   requestRecord: {},
+  // 将github的仓库名作为基本url
   publicPath: process.env.NODE_ENV === 'production' ? '/TechTrove/' : '/',
 });
