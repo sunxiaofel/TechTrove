@@ -1,3 +1,4 @@
+import { Card } from 'antd';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -10,13 +11,13 @@ const Earth = () => {
     // 初始化场景、相机和渲染器
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      630,
-      window.innerWidth / window.innerHeight,
+      100,
+      mountRef.current.clientWidth / window.innerHeight,
       0.1,
       1000,
     );
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(mountRef.current.clientWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
     // 添加光源
@@ -84,7 +85,7 @@ const Earth = () => {
 
     // 处理窗口调整大小
     const handleResize = () => {
-      const width = window.innerWidth;
+      const width = mountRef.current.clientWidth;
       const height = window.innerHeight;
       renderer.setSize(width, height);
       camera.aspect = width / height;
@@ -100,7 +101,7 @@ const Earth = () => {
     };
   }, []);
 
-  return <div ref={mountRef}></div>;
+  return <Card style={{ width: '80vw', height: 500 }} ref={mountRef}></Card>;
 };
 
 export default Earth;
