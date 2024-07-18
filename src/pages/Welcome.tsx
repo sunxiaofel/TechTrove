@@ -117,7 +117,7 @@ const Welcome: React.FC = () => {
               lineHeight: '22px',
               marginTop: 16,
               marginBottom: 32,
-              width: '65%',
+              // width: '65%',
             }}
           >
             <FormattedMessage id="pages.welcome.desc" defaultMessage="desc" />

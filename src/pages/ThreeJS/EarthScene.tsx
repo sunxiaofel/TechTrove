@@ -10,7 +10,7 @@ const Earth = () => {
     // 初始化场景、相机和渲染器
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      670,
+      630,
       window.innerWidth / window.innerHeight,
       0.1,
       1000,
