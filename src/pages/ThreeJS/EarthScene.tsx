@@ -35,46 +35,52 @@ const Earth = () => {
     const geometry = new THREE.SphereGeometry(1, 64, 64); // 增加细分，提高纹理效果
     const textureLoader = new THREE.TextureLoader();
 
-    const earthTexture = textureLoader.load('/imgs/earth.jpg', (texture) => {
-      const material = new THREE.MeshPhongMaterial({
-        map: texture,
-        displacementScale: 0.1, // 调整凹凸不平的强度
-        shininess: 30, // 增加高光反射
-      });
-      const earth = new THREE.Mesh(geometry, material);
-      scene.add(earth);
-      earthRef.current = earth; // 存储地球的引用
-
-      // 添加云层
-      const cloudGeometry = new THREE.SphereGeometry(1.01, 64, 64); // 增加细分，提高纹理效果
-      const cloudTexture = textureLoader.load('/imgs/clouds.jpg', (cloudTex) => {
-        const cloudMaterial = new THREE.MeshPhongMaterial({
-          map: cloudTex,
-          transparent: true,
-          opacity: 0.4,
+    const earthTexture = textureLoader.load(
+      `${process.env.NODE_ENV === 'production' ? '/TechTrove/' : '/'}imgs/earth.jpg`,
+      (texture) => {
+        const material = new THREE.MeshPhongMaterial({
+          map: texture,
+          displacementScale: 0.1, // 调整凹凸不平的强度
+          shininess: 30, // 增加高光反射
         });
-        const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
-        scene.add(clouds);
-        cloudsRef.current = clouds; // 存储云层的引用
+        const earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+        earthRef.current = earth; // 存储地球的引用
 
-        // 设置相机位置
-        camera.position.z = 3;
+        // 添加云层
+        const cloudGeometry = new THREE.SphereGeometry(1.01, 64, 64); // 增加细分，提高纹理效果
+        const cloudTexture = textureLoader.load(
+          `${process.env.NODE_ENV === 'production' ? '/TechTrove/' : '/'}imgs/clouds.jpg`,
+          (cloudTex) => {
+            const cloudMaterial = new THREE.MeshPhongMaterial({
+              map: cloudTex,
+              transparent: true,
+              opacity: 0.4,
+            });
+            const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+            scene.add(clouds);
+            cloudsRef.current = clouds; // 存储云层的引用
 
-        // 动画效果
-        const animate = () => {
-          requestAnimationFrame(animate);
-          if (earthRef.current) {
-            earthRef.current.rotation.y += 0.001; // 地球自转速度
-          }
-          if (cloudsRef.current) {
-            cloudsRef.current.rotation.y += 0.0012; // 云层自转速度
-          }
-          renderer.render(scene, camera);
-        };
+            // 设置相机位置
+            camera.position.z = 3;
 
-        animate();
-      });
-    });
+            // 动画效果
+            const animate = () => {
+              requestAnimationFrame(animate);
+              if (earthRef.current) {
+                earthRef.current.rotation.y += 0.001; // 地球自转速度
+              }
+              if (cloudsRef.current) {
+                cloudsRef.current.rotation.y += 0.0012; // 云层自转速度
+              }
+              renderer.render(scene, camera);
+            };
+
+            animate();
+          },
+        );
+      },
+    );
 
     // 处理窗口调整大小
     const handleResize = () => {
@@ -90,7 +96,7 @@ const Earth = () => {
     // 清理函数
     return () => {
       window.removeEventListener('resize', handleResize);
-      mountRef.current.removeChild(renderer.domElement);
+      mountRef.current?.removeChild(renderer.domElement);
     };
   }, []);
 
