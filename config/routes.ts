@@ -15,11 +15,11 @@ export default [
     path: '/user',
     layout: false,
     routes: [
-      {
-        name: 'login',
-        path: '/user/login',
-        component: './User/Login',
-      },
+      // {
+      //   name: 'login',
+      //   path: '/user/login',
+      //   component: './User/Login',
+      // },
     ],
   },
   {
@@ -45,12 +45,12 @@ export default [
       },
     ],
   },
-  {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
-  },
+  // {
+  //   name: 'list.table-list',
+  //   icon: 'table',
+  //   path: '/list',
+  //   component: './TableList',
+  // },
   {
     path: '/',
     redirect: '/welcome',
