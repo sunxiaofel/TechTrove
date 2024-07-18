@@ -1,6 +1,7 @@
+import MyCard from '@/components/MyCard/MyCard';
 import { PageContainer } from '@ant-design/pro-components';
-import { FormattedMessage, useModel } from '@umijs/max';
-import { Card, theme } from 'antd';
+import { FormattedMessage } from '@umijs/max';
+import { theme } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
 
@@ -86,26 +87,12 @@ const InfoCard: React.FC<{
 
 const Welcome: React.FC = () => {
   const { token } = theme.useToken();
-  const { initialState } = useModel('@@initialState');
   const startDate = dayjs('2024/7/9');
   const nowDate = dayjs();
   const daysPassed = nowDate.diff(startDate, 'day');
-  console.log('🚀 ~ nowDate:', nowDate);
   return (
     <PageContainer>
-      <Card
-        style={{
-          borderRadius: 8,
-        }}
-        styles={{
-          body: {
-            backgroundImage:
-              initialState?.settings?.navTheme === 'realDark'
-                ? 'background-image: linear-gradient(75deg, #1A1B1F 0%, #191C1F 100%)'
-                : 'background-image: linear-gradient(75deg, #FBFDFF 0%, #F5F7FF 100%)',
-          },
-        }}
-      >
+      <MyCard>
         <div
           style={{
             backgroundPosition: '100% -30%',
@@ -149,7 +136,7 @@ const Welcome: React.FC = () => {
             }}
           ></div>
         </div>
-      </Card>
+      </MyCard>
     </PageContainer>
   );
 };
